@@ -1,0 +1,6 @@
+Django
+django-allauth
+gunicorn
+requests
+pyJWT
+cryptography
