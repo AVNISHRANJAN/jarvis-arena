@@ -613,7 +613,7 @@ body.active {
   \*-----------------------------------*/
 
 .section-wrapper {
-    background: url("{% static '/media/section-wrapper-bg.jpg' %}") no-repeat;
+    background: url("../media/section-wrapper-bg.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     padding-top: 50px;
@@ -1538,7 +1538,9 @@ ul {
 .card-upper a {
     position: absolute;
     text-align: center;
-    inset: auto 30px 40px 30px;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
     opacity: 0;
     font-size: 17px;
     max-width: 200px;
@@ -1548,8 +1550,6 @@ ul {
     color: inherit;
     /* background-color: rgb(42, 29, 74); */
     text-decoration: none;
-    margin-left: 499px;
-    margin-bottom: -2px;
 
 }
 
@@ -1559,7 +1559,6 @@ ul {
 }
 
 .card-upper:hover a {
-    inset: auto 30px 40px 30px;
     opacity: 1;
     transition: opacity 0.5s 0.1s ease-in;
 }
@@ -1589,14 +1588,7 @@ ul {
 
     .card-upper a {
         font-size: 14px;
-        inset: auto 30px 30px 20px;
-        margin-left: 150px;
-
-    }
-
-    .card-upper a:hover {
-        inset: auto 30px 30px 20px;
-        margin-left: 150px;
+        bottom: 30px;
 
     }
 
@@ -1619,13 +1611,7 @@ ul {
 
     .card-upper a {
         font-size: 12px;
-        margin-left: 50px;
-
-    }
-
-    .card-upper a:hover {
-        /* inset: auto 30px 25px 15px; */
-        margin-left: 50px;
+        bottom: 24px;
     }
 
     .card-upper:hover h2 {
@@ -1647,12 +1633,10 @@ ul {
 
 .carousel {
     /* background-color: ; */
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: -50px;
+    margin: 70px auto 0;
     height: 87vh;
-    margin-top: 70px;
-    width: auto;
+    width: calc(100% - 64px);
+    max-width: 1280px;
     border-radius: 50px;
     overflow: hidden;
     position: relative;
@@ -1674,8 +1658,7 @@ ul {
 .carousel .list .item .content {
     position: absolute;
     top: 15%;
-    width: 1140px;
-    max-width: 80%;
+    max-width: min(80%, 1140px);
     left: 50%;
     transform: translateX(-50%);
     padding-right: 30%;
@@ -1778,10 +1761,10 @@ ul {
 .arrows {
     position: absolute;
     top: 80%;
-    right: 52%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 100;
-    width: 300px;
-    max-width: 30%;
+    width: fit-content;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -1973,12 +1956,37 @@ ul {
 }
 
 @media screen and (max-width: 678px) {
+    .carousel {
+        width: calc(100% - 24px);
+        border-radius: 20px;
+    }
+
     .carousel .list .item .content {
         padding-right: 0;
+        max-width: 90%;
+        top: 12%;
     }
 
     .carousel .list .item .content .title {
         font-size: 30px;
+    }
+
+    .carousel .list .item .content .topic {
+        font-size: 30px;
+    }
+
+    .carousel .list .item .content .des {
+        font-size: 1rem;
+        margin-right: 0;
+    }
+
+    .thumbnail {
+        display: none;
+    }
+
+    .arrows {
+        top: auto;
+        bottom: 20px;
     }
 }
 
@@ -1987,15 +1995,12 @@ ul {
 
 /* ?   --------------------------------------------- Upcoming ------------------------------------------- */
 
-* {
+.wrapper-feature,
+.wrapper-feature * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-    background-color: #eeeeea;
 }
 
 .wrapper-feature {
@@ -2068,17 +2073,37 @@ body {
     text-transform: uppercase;
 }
 
-input {
+.container-feature input {
     display: none;
 }
 
-input:checked+label {
+.container-feature input:checked+label {
     width: 600px;
 }
 
-input:checked+label .description-feature {
+.container-feature input:checked+label .description-feature {
     opacity: 1 !important;
     transform: translateY(0) !important;
+}
+
+@media screen and (max-width: 992px) {
+    .wrapper-feature {
+        margin-top: 0 !important;
+        height: auto;
+        min-height: 70vh;
+        padding: 30px 0;
+    }
+
+    .container-feature {
+        width: 100%;
+        overflow-x: auto;
+        padding: 0 14px 12px;
+        gap: 10px;
+    }
+
+    .container-feature input:checked+label {
+        width: min(520px, 80vw);
+    }
 }
 
 
